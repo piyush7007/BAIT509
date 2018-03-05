@@ -1,3 +1,5 @@
+
+#large data small variance
 library(tidyverse)
 library(knitr)
 
@@ -18,3 +20,44 @@ dat_knn_new
 
 y_pre = mean(dat_knn_new$y)
 y_pre
+
+dat_loess = filter(dat_knn, d<1)# but choose dat2 as we will choose only one method
+mean(dat_loess$y)
+
+#lower r 0.01, its a possibilty that we have no data in the window
+
+library(tidyverse)
+xgrid <- seq(-5, 4, length.out=1000)
+kNN_estimates <- map_dbl(xgrid, function(x){
+
+  dat$d <- abs(x - dat$x)
+  #dat.knn <- dat %>% top_n(k)
+  
+  dat_knn <- arrange(dat,d)
+  dat_knn_new <- dat_knn[1:5,]
+  dat_knn_new
+  #underfitting does not capture the features of data, and over capture features that are not depend in the data
+  #like knn
+  #map_dbl(vector, function on vector)
+  y_pre = mean(dat_knn_new$y)
+  return(y_pre)
+})
+loess_estimates <- map_dbl(xgrid, function(x){
+  dat$d <- abs(x - dat$x)
+  dat_new <- arrange(dat,d)
+  
+  dat_loess = filter(dat_new, d<1)# but choose dat2 as we will choose only one method
+  y_pred = mean(dat_loess$y)
+  return(y_pred)
+})
+est <- tibble(x=xgrid, kNN=kNN_estimates, loess=loess_estimates) %>% 
+  gather(key="method", value="estimate", kNN, loess)
+ggplot() +
+  geom_point(data=dat, mapping=aes(x,y), colour = "orange") +
+  geom_line(data=est, 
+            mapping=aes(x,estimate, group=method, colour=method)) +
+  theme_bw()
+ 
+  #kernal is a function we put on r (window width), flat is similar to knn or loess(y axis is kernel and 
+  #x axis is r window, so we can adjust the weights as the r increases) for some kernel funtions we dont need to choose r as in gaussian
+  # kernel function is typically done in loess, but we can do in knn too
