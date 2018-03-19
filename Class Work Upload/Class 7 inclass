@@ -1,0 +1,11 @@
+1. when m=p, subset of predictors = equal full predictors
+
+2. m, number of trees, number of predictors you subset
+
+3. 3rd is significant - (1,2), (1,2), (1,5)
+
+4. (2,0)
+
+5. 
+a. 2 - average of 1,1,3,3
+b. "A"
