@@ -1,0 +1,18 @@
+Answer 1:
+We can say for A the likelyhood of the person to have productive score of 75 is 0.4, and for B the likelyhood is 0.1 to have productive 
+score of 75. Density is the likelyhood, or our belief. A has low variance, B has a lot of variance.
+
+Answer 2:
+We will choose candidate B, as even if the productivity has high variance but the worst case is always better than candidate A, which is 60. 
+
+Answer 3:
+The probabilist forecast is centred around the 0 response with probability od 0.4, but according to the the test data the graph should be 
+skewed more towards 2 and not 0.
+
+----------------------------------------------------------------------------------------------------------
+Class notes:::
+
+0.9 - quantile = 100m3/s
+only 10 percent chance that flow will be more than 100 m3/s, so in some cases high quantiles are useful
+
+mean is necesary if we have to predict the average of the car, whenever we want to total.
