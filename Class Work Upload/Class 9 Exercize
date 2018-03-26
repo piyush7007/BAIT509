@@ -1,0 +1,13 @@
+Ans1: If X1 < 7.5 then A, else B; Our new Observation will be A
+
+Ans2: Size of Margin: 2
+
+Ans3: 6, 7, 8, 9 and 10 are the observations that will recieve the penalty and these observations are also the support vectors
+
+Ans4: Penalty = Total penalty in units/Margin width => 11.5/2 = 5.75 or 0.25+0.25+1.25+1.75+2.25 = 5.75
+
+Ans5: Yes we can choose a biiger margin width, as current penalty = 5.75, new penalty = 6, diff = 0.25, we have 5 points within range 
+so penalty per point is 0.25/5 = 0.05 per point. 
+
+Ans6: Yes the data is separable, with support vectors as 4, 8 and 9.
+The one with larger margin will be optimal.
